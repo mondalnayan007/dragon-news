@@ -6,7 +6,7 @@ import { Link,NavLink } from 'react-router';
 
 const Navbar = () => {
 
-    const { user, logOut, setUser } = useContext(AuthContext);
+    const { user, logOut, setUser} = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
@@ -18,6 +18,8 @@ const Navbar = () => {
                 console.log(error);
             });
     }
+
+  
 
     return (
         <div className='grid grid-cols-3'>
@@ -32,8 +34,8 @@ const Navbar = () => {
             <div className='flex items-center justify-end gap-2'>
                 <img src={userImg} alt="" />
                 {user 
-                    ? <button onClick={handleLogOut} className='btn btn-primary px-8 text-lg'>LogOut</button> 
-                    : <Link to='/auth/login' className='btn btn-primary px-8 text-lg'>Login</Link>
+                    ? <Link onClick={handleLogOut} className='btn btn-primary px-8 text-lg'>LogOut</Link> 
+                    : <Link  to='/auth/login' className='btn btn-primary px-8 text-lg'>Login</Link>
                 }
             </div>
         </div>
