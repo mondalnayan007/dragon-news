@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { AuthContext } from '../Components/AuthProvider';
 
 const Register = () => {
-    const {createUser,setUser} = use(AuthContext)
+    const {createUser,setUser,user} = use(AuthContext)
 
     const handleRegister =(e)=>{
            e.preventDefault();
@@ -17,6 +17,7 @@ const Register = () => {
            createUser(email,password)
            .then(result =>{
                const user = result.user;
+               alert("Register successful..")
               
                setUser(user);
            })
@@ -26,7 +27,10 @@ const Register = () => {
 
     }
     return (
-        <div className='flex justify-center'>
+        <>
+            
+            {
+                user ? 'register successfull' : <div className='flex justify-center'>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5 px-3">
                         <h2 className='text-2xl font-bold text-center'>Register your account</h2>
                         <hr className='h-0 text-gray-300 w-[80%] mx-auto mt-8'/>
@@ -51,6 +55,10 @@ const Register = () => {
                         </form>
                     </div>
                 </div>
+            }
+        
+
+                </>
     );
 };
 

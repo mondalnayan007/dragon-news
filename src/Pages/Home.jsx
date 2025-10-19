@@ -1,9 +1,10 @@
 import React from 'react';
+import CategoryNews from './CategoryNews';
 
 const Home = () => {
     return (
         <div>
-            Home
+            
         </div>
     );
 };

@@ -1,10 +1,11 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../Components/AuthProvider';
 
 
 const Login = () => {
 
-   
+   const {user} = use(AuthContext)
     return (
         <div className='flex justify-center'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5 px-3">
