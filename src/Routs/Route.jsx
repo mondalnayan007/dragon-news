@@ -28,13 +28,9 @@ export const router = createBrowserRouter([
     },
     {
         path:'/details/:id',
-        element:<DetailsLayout></DetailsLayout>,
-        children: [
-            {
-                path: "", // nested route
-                element: <NewsDetails />
-            }
-    ],
+        element:<NewsDetails />,
+        loader : ()=>fetch('/news.json')
+       
     },
     {
         path:'/auth',
