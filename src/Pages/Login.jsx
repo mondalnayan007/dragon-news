@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Components/AuthProvider';
 
@@ -9,6 +9,8 @@ const Login = () => {
     const location = useLocation()
 
     const navigate = useNavigate()
+
+    const [error , setError] = useState('')
     
 
     const handleLogIn = (e) => {
@@ -23,7 +25,7 @@ const Login = () => {
                 navigate(`${location.state ? location.state : "/"}`)
             })
             .catch(error => {
-                console.log(error)
+                setError(error.message);
             })
     }
     return (
@@ -35,9 +37,12 @@ const Login = () => {
                     <form onSubmit={handleLogIn} className="fieldset">
 
                         <label className="label font-bold text-black py-1 text-base">Email</label>
-                        <input type="email" className="input" name='email' placeholder="Email" />
+                        <input type="email" className="input" name='email' placeholder="Email" required />
                         <label className="label font-bold text-black py-1 text-base">Password</label>
-                        <input type="password" className="input" name='password' placeholder="Password" />
+                        <input type="password" className="input" name='password' placeholder="Password" required />
+                        {
+                            error && <p className='text-red-600'>{error}</p>
+                        }
                         <div><a className="link link-hover">Forgot password?</a></div>
                         <button className='btn btn-primary px-8 text-lg'>Login</button>
                         <p className='font-semibold  mt-5 text-center'>Don't Have An Account? <Link to={'/auth/register'} className='text-secondary'>Register</Link> </p>
